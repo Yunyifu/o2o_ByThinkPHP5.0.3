@@ -19,6 +19,7 @@ class Base extends Controller
     /*
      * 获取城市，并在选择后改变前面城市的值
      */
+
     public function getCity($citys){
         foreach($citys as $city){
             $city = $city->toArray();
