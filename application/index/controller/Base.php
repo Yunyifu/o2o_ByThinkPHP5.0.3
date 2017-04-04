@@ -7,17 +7,25 @@ class Base extends Controller
 {
     public $city = '';
     public $account = '';
+    public $cats = '';
     public function _initialize()
     {
         $citys = model('City')->getNormalCitys();
+        //获取城市数据
         $this->getCity($citys);
+        //获取首页分类数据
+        $cats = $this->getRecommendCats();
+        //halt($cats);
+        $this->assign('cats',$cats);
         $this->assign('citys',$citys);
         $this->assign('city',$this->city);
+        $this->assign('controller',strtolower(request()->controller()));
         $this->assign('user',$this->getLoginUser());
+        $this->assign('title','o2o团购网');
     }
 
     /*
-     * 获取城市，并在选择后改变前面城市的值
+     * 获取城市数据，并在选择后改变前面城市的值
      */
 
     public function getCity($citys){
@@ -40,6 +48,35 @@ class Base extends Controller
 
         $this->city = model('City')->where(['uname'=>$cityuname])->find();
     }
+
+    /*
+     * 获取首页分类数据
+     */
+    public function getRecommendCats(){
+        $parentIds = $sedCatArr = $recomCats = [];
+        $cats = model('Category')->getNormalRecommendCategoryByParentId(0,5);
+        foreach($cats as $cat){
+            $parentIds[] = $cat->id;
+        }
+        //获取二级分类数据
+        $sedCats = model('Category')->getNormalCategorysByParentId($parentIds);
+        foreach($sedCats as $sedCat){
+            $sedCatArr[$sedCat->parent_id][] = [
+                'id'=>$sedCat->id,
+                'name'=>$sedCat->name
+            ];
+        }
+
+        foreach($cats as $cat){
+            //recomCats代表的是一级和二级数据， []第一个参数是一级分类的name，第二个参数是此一级分类下面的所有二级分类数据
+            $recomCats[$cat->id] = [$cat->name,empty($sedCatArr[$cat->id])?[]:$sedCatArr[$cat->id]];
+        }
+
+        return $recomCats;
+
+
+    }
+
 
     public function getLoginUser()
     {

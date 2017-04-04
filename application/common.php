@@ -77,3 +77,16 @@ function getSeCityName($path){
     $city = model('City')->get($cityId);
     return $city->name;
 }
+
+//前端页面“多店通用”函数
+function countLocation($ids){
+    if(!$ids){
+        return 1;
+    }
+
+    if(preg_match('/,/',$ids)){
+        $arr = explode(',',$ids);
+
+        return count($arr);
+    }
+}
