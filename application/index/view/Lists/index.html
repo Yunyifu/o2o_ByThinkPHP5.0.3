@@ -13,24 +13,13 @@
                             <div class="w-filter-normal-ab  filter-list-ab">
                                 <h5 class="filter-label-ab">分类</h5>
                                 <span class="filter-all-ab">
-                                    <a class="w-filter-item-ab  item-all-auto-ab"><span class="item-content filter-active-all-ab ">全部</span></a>
+                                    <a class="w-filter-item-ab  item-all-auto-ab"><span class="item-content {if condition='$id eq 0'} filter-active-all-ab {/if}">全部</span></a>
                                 </span>
                                 <div class="j-filter-items-wrap-ab filter-items-wrap-ab">
                                     <div class="j-filter-items-ab filter-items-ab filter-content-ab">
-                                        <a class="w-filter-item-ab"><span class="item-content">今日新单</span></a>
-                                        <a class="w-filter-item-ab"><span class="item-content">中餐/家常菜</span></a>
-                                        <a class="w-filter-item-ab"><span class="item-content">小龙虾</span></a>
-                                        <a class="w-filter-item-ab"><span class="item-content">素食</span></a>
-                                        <a class="w-filter-item-ab"><span class="item-content">粥店</span></a>
-                                        <a class="w-filter-item-ab"><span class="item-content">台湾菜/客家菜</span></a>
-                                        <a class="w-filter-item-ab"><span class="item-content">其他美食</span></a>
-                                        <a class="w-filter-item-ab"><span class="item-content">今日新单</span></a>
-                                        <a class="w-filter-item-ab"><span class="item-content">中餐/家常菜</span></a>
-                                        <a class="w-filter-item-ab"><span class="item-content">小龙虾</span></a>
-                                        <a class="w-filter-item-ab"><span class="item-content">素食</span></a>
-                                        <a class="w-filter-item-ab"><span class="item-content">粥店</span></a>
-                                        <a class="w-filter-item-ab"><span class="item-content">台湾菜/客家菜</span></a>
-                                        <a class="w-filter-item-ab"><span class="item-content">其他美食</span></a>
+                                        {volist name="categorys" id="vo"}
+                                        <a class="w-filter-item-ab " ><span class="item-content {if condition='$vo.id eq $categoryParentId'} filter-active-all-ab {/if}">{$vo.name}</span></a>
+                                        {/volist}
                                     </div>
                                 </div>
                             </div>
