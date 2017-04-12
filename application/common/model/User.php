@@ -6,27 +6,33 @@ use think\Model;
 class User extends BaseModel
 {
 
-    public function add($data=[])
-    {
-        //如果提交的数据不是数组
+
+    public function add($data=[]){
         if(!is_array($data)){
-            exception('传递的数据不是数组');
+            $this->error('传递的不是数组');
         }
         $data['status'] = 1;
         //$data['create_time'] = time();
-        return $this->allowField(true)->save($data);
+        return $this->data($data)->allowField(true)->save();
 
     }
 
-    //根据用户名获取用户信息
-    public function getUserByUsername($username){
-        if(!$username){
-            exception('用户名不合法');
-        }
+    //获取用户数据
+    public function getUserByStatus($status = 1){
 
-        $data = ['username'=>$username];
-        return $this->where($data)->find();
-}
+        $order = ['id' => 'desc'];
+        $result = $this->where($status)->order($order)->paginate(5);
+        return $result;
+    }
+
+    //获取删除商家数据
+    public function getDelUserByStatus(){
+
+        $order = ['id' => 'desc'];
+        $status = ['status' => -1];
+        $result = $this->where($status)->order($order)->paginate(5);
+        return $result;
+    }
 
 
 

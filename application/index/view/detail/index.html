@@ -26,7 +26,7 @@
                             <div class="item-status ">
                                 <span class="ico-status ico-jingxuan"></span>
                             </div>
-                            <a target="_blank" href="{:url('deal/index',['id'=>$vo.id])}"><img src="{$deal.image}" class="item-img-large" /></a>
+                            <a target="_blank" href=""><img src="{$deal.image}" class="item-img-large" /></a>
                         </div>
                         <ul class="images-list clearfix">
                             <li class="images images-last">
@@ -142,7 +142,7 @@
                     <li class="tab">
                         <div class="ia-shop-branch">
                             <div class="w-shop-branch">
-                                <h3 class="w-section-header">分店信息</h3>
+                                <h3 class="w-section-header">店铺信息</h3>
                                 <div class="branch-content">
                                     <div class="shop-map">
                                         <div class="w-map">
@@ -154,98 +154,22 @@
                                         <div>
                                             <div class="w-area-filter">
                                                 <label>筛选：</label>
-                                                <select name="city" class="af-content"><option value="100010000" selected="">北京市</option></select>
-                                                <select name="district" class="af-content">
-                                                    <option selected="">全部城区</option>
-                                                    <option value="307">朝阳区</option>
-                                                    <option value="392">海淀区</option>
-                                                    <option value="395">丰台区</option>
-                                                    <option value="408">通州区</option>
-                                                    <option value="6547">平谷区</option>
+                                                <select name="city" class="af-content cityId">
+                                                    {volist name="citys" id="vo"}
+                                                    <option  value="{$vo.id}" selected="">{$vo.name}</option>
+                                                    {/volist}
+                                                </select>
+                                                <select name="district" class="af-content se_city_id">
+                                                    <option selected="">全部地区</option>
                                                 </select>
                                             </div>
                                             <div class="branch-list-content">
                                                 <div class="w-branch-list">
                                                     <ul class="branch-list-content">
                                                         <li class="branch branch-open">
-                                                            <a href="//www.nuomi.com/shop/133957" target="_blank" class="branch-name">好伦哥(西坝河店)</a>
-                                                            <p class="branch-address">北京市朝阳区西坝河东里83号商业用楼（国际展览中心对面）</p>
-                                                            <p class="branch-tel">01064655007</p>
-                                                            <p class="map-travel">
-                                                                <a href="javascript:;" class="map">
-                                                                    <span class="icon"></span>
-                                                                    <span class="text">查询地图</span>
-                                                                </a>
-                                                                <a href="javascript:;" class="travel">
-                                                                    <span class="icon"></span>
-                                                                    <span class="text">公交/驾车去这里</span>
-                                                                </a>
-                                                            </p>
-                                                        </li>
-                                                        <li class="branch branch-close">
-                                                            <a href="//www.nuomi.com/shop/133957" target="_blank" class="branch-name">好伦哥(西坝河店)</a>
-                                                            <p class="branch-address">北京市朝阳区西坝河东里83号商业用楼（国际展览中心对面）</p>
-                                                            <p class="branch-tel">01064655007</p>
-                                                            <p class="map-travel">
-                                                                <a href="javascript:;" class="map">
-                                                                    <span class="icon"></span>
-                                                                    <span class="text">查询地图</span>
-                                                                </a>
-                                                                <a href="javascript:;" class="travel">
-                                                                    <span class="icon"></span>
-                                                                    <span class="text">公交/驾车去这里</span>
-                                                                </a>
-                                                            </p>
-                                                        </li>
-                                                        <li class="branch branch-close">
-                                                            <a href="//www.nuomi.com/shop/133957" target="_blank" class="branch-name">好伦哥(西坝河店)</a>
-                                                            <p class="branch-address">北京市朝阳区西坝河东里83号商业用楼（国际展览中心对面）</p>
-                                                            <p class="branch-tel">01064655007</p>
-                                                            <p class="map-travel">
-                                                                <a href="javascript:;" class="map">
-                                                                    <span class="icon"></span>
-                                                                    <span class="text">查询地图</span>
-                                                                </a>
-                                                                <a href="javascript:;" class="travel">
-                                                                    <span class="icon"></span>
-                                                                    <span class="text">公交/驾车去这里</span>
-                                                                </a>
-                                                            </p>
-                                                        </li>
-                                                        <li class="branch branch-close">
-                                                            <a href="//www.nuomi.com/shop/133957" target="_blank" class="branch-name">好伦哥(西坝河店)</a>
-                                                            <p class="branch-address">北京市朝阳区西坝河东里83号商业用楼（国际展览中心对面）</p>
-                                                            <p class="branch-tel">01064655007</p>
-                                                            <p class="map-travel">
-                                                                <a href="javascript:;" class="map">
-                                                                    <span class="icon"></span>
-                                                                    <span class="text">查询地图</span>
-                                                                </a>
-                                                                <a href="javascript:;" class="travel">
-                                                                    <span class="icon"></span>
-                                                                    <span class="text">公交/驾车去这里</span>
-                                                                </a>
-                                                            </p>
-                                                        </li>
-                                                        <li class="branch branch-close">
-                                                            <a href="//www.nuomi.com/shop/133957" target="_blank" class="branch-name">好伦哥(西坝河店)</a>
-                                                            <p class="branch-address">北京市朝阳区西坝河东里83号商业用楼（国际展览中心对面）</p>
-                                                            <p class="branch-tel">01064655007</p>
-                                                            <p class="map-travel">
-                                                                <a href="javascript:;" class="map">
-                                                                    <span class="icon"></span>
-                                                                    <span class="text">查询地图</span>
-                                                                </a>
-                                                                <a href="javascript:;" class="travel">
-                                                                    <span class="icon"></span>
-                                                                    <span class="text">公交/驾车去这里</span>
-                                                                </a>
-                                                            </p>
-                                                        </li>
-                                                        <li class="branch branch-close">
-                                                            <a href="//www.nuomi.com/shop/133957" target="_blank" class="branch-name">好伦哥(西坝河店)</a>
-                                                            <p class="branch-address">北京市朝阳区西坝河东里83号商业用楼（国际展览中心对面）</p>
-                                                            <p class="branch-tel">01064655007</p>
+                                                            <a href="" target="_blank" class="branch-name">{$deal->name}</a>
+                                                            <p class="branch-address">{$locations[0]->address}</p>
+                                                            <p class="branch-tel">商家电话：{$locations[0]->tel}</p>
                                                             <p class="map-travel">
                                                                 <a href="javascript:;" class="map">
                                                                     <span class="icon"></span>
@@ -265,10 +189,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="ifram">本单详情（此处高度随着填充的内容自动变化）</div>
+                        <div class="ifram">{$deal->description}</div>
                     </li>
-                    <li class="tab"><div class="ifram">消费提示（此处高度随着填充的内容自动变化）</div></li>
-                    <li class="tab"><div class="ifram">商家介绍（此处高度随着填充的内容自动变化）</div></li>
+                    <li class="tab"><div class="ifram">{$deal->notes}</div></li>
+                    <li class="tab"><div class="ifram">{$locations[0]}</div></li>
                 </ul>
             </div>
         </div>
@@ -345,6 +269,17 @@
             url = "{:url('Order/confirm',['id'=>$deal.id])}"+"&count="+count;
             window.open(url);
         });
+    </script>
+    <script>
+        /**定义页面全局变量**/
+        var SCOPE = {
+                    "city_url" : "{:url('api/city/getCitysByParentId')}",
+                    "category_url" : "{:url('api/category/getCategoryByParentId')}",
+                    "uploadify_swf" : "__STATIC__/admin/uploadify/uploadify.swf",
+                    "image_upload" : "{:url('api/image/upload')}",
+                    'uploadify_url':'{:url('api/image/upload')}'
+        };
+
     </script>
 </body>
 </html>

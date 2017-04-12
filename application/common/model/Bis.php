@@ -15,12 +15,23 @@ class Bis extends Model
     }
 
     //获取商家数据
-    public function getBisByStatus($status=0){
+    public function getBisByStatus($status = 0){
 
         $order = ['id' => 'desc'];
         $result = $this->where($status)->order($order)->paginate(5);
         return $result;
     }
+
+    //获取删除商家数据
+    public function getDelBisByStatus(){
+
+        $order = ['id' => 'desc'];
+        $status = ['status' => -1];
+        $result = $this->where($status)->order($order)->paginate(5);
+        return $result;
+    }
+
+
 
 
 

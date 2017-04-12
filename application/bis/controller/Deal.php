@@ -5,7 +5,11 @@ class Deal extends Base
 {
     public function index(){
 
-        return '商品列表，待添加';
+        $bisId = $this->getLoginUser()->bis_id;
+        $result = model('Deal')->getNormalDealByBisId($bisId,10);
+        $result = collection($result)->toArray();
+        //halt($result[0]['create_time']);
+        return $this->fetch('',['result'=>$result]);
     }
 
     public function add(){

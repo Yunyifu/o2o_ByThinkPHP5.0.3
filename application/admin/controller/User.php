@@ -1,54 +1,29 @@
 <?php
 namespace app\admin\controller;
 use think\Controller;
-class Bis extends Controller
+class User extends Controller
 {
     private $obj;
     public function _initialize(){
-        $this->obj = model('Bis');
+        $this->obj = model('User');
     }
 
 
-    //入住申请列表
-    public function apply(){
-        $bis =  $this->obj->getBisByStatus();
-        return $this->fetch('',
-            ['bis' => $bis]
-            );
-    }
 
-    //正常商户列表
+
     public function index(){
-        $bis =  $this->obj->getBisByStatus(1);
+        $user =  $this->obj->getUserByStatus();
         return $this->fetch('',
-            ['bis' => $bis]
+            ['user' => $user]
         );
     }
 
-    //商户入住资料编辑
-    public function detail(){
-        $id = input('get.id');
-        $citys = model('City')->getNormalCitysByParentId();
-        $categorys = model('Category')->getNormalCategoryByParentId();
-        $bisData = model('Bis')->get($id);
-        $bisLocation = model('BisLocation')->get(['bis_id'=>$id,'is_main'=>1]);
-        $accountData = model('BisAccount')->get(['bis_id'=>$id,'is_main'=>1]);
-        return $this->fetch('',[
-            'citys'=>$citys,
-            'categorys'=>$categorys,
-            'bisData'=>$bisData,
-            'bisLocation'=>$bisLocation,
-            'accountData'=>$accountData
 
-        ]);
-
-
-    }
 
     public function delete(){
-        $bis =  $this->obj->getDelBisByStatus();
+        $user =  $this->obj->getDelUserByStatus();
         return $this->fetch('',
-            ['bis' => $bis]
+            ['user' => $user]
         );
     }
 

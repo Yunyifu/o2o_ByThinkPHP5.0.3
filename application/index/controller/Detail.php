@@ -13,7 +13,7 @@ class Detail extends Base
         //根据id查询商品数据
         $deal = model('Deal')->get($id);
         if(!$deal || $deal->status !=1){
-            $this->error('改商品不存在');
+            $this->error('该商品不存在');
         }
         //获取分类信息
         $category = model('Category')->get($deal->category_id);
@@ -21,6 +21,9 @@ class Detail extends Base
         $bisId = $deal->bis_id;
         //获取分店信息
         $locations = model('BisLocation')->getNormalLocationInId($deal->location_ids);
+        //获取城市列表
+        $citys = model('City')->getNormalCitys();
+        //$citys = model('City')->
 
         $flag = 0;
         if($deal->start_time>time()){
@@ -50,7 +53,8 @@ class Detail extends Base
                 'deal'=>$deal,
                 'overplus'=>$deal->total_count-$deal->buy_count,
                 'flag' =>$flag,
-                'mapstr'=>$locations[0]['xpoint'].','.$locations[0]['ypoint']
+                'mapstr'=>$locations[0]['xpoint'].','.$locations[0]['ypoint'],
+                'citys' => $citys,
             ]
             );
     }

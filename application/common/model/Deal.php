@@ -33,6 +33,24 @@ class Deal extends BaseModel
 
         return $result->select();
     }
+    /*
+     * 根据商户ID取数据
+     */
+    public function getNormalDealByBisId($bisId,$limit=10){
+        $data = [
+            'bis_id' => $bisId,
+            'status' => 1,
+        ];
+
+        $order = ['listorder'=>'desc','id' => 'desc',];
+
+        $result = $this->where($data)->order($order);
+        if($limit){
+            $result->limit($limit);
+        }
+
+        return $result->select();
+    }
 
     public function getDealByCondition($data=[],$orders){
         if(!empty($orders['order_sales'])){

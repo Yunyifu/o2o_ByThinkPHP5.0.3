@@ -1,7 +1,7 @@
 
 
 <div class="search">
-    <img src="__STATIC__/index/image/logo.png" />
+    <a href="{:url('index/index')}"><img src="__STATIC__/index/image/logo.png" /></a>
 
 </div>
 
@@ -38,9 +38,10 @@
                     {/volist}
                 </div>
             </li>
-            <li class="nav-item"><a class="item first active">首页</a></li>
-            <li class="nav-item"><a class="item">团购</a></li>
-            <li class="nav-item"><a class="item">商户</a></li>
+            <li class="nav-item"><a href="{:url('index/index')}" class="item first active">首页</a></li>
+            <li class="nav-item"><a href="{:url('index/index')}" class="item">今日新单</a></li>
+            <li class="nav-item"><a href="{:url('bis/index/index')}" class="item">商户</a></li>
+            <li class="nav-item"><a href="{:url('admin/index/index')}" class="item">管理员</a></li>
         </ul>
     </div>
 </div>

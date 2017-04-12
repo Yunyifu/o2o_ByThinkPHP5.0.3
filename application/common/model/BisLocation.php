@@ -30,4 +30,16 @@ class BisLocation extends Model
         return $this->where($data)->select();
     }
 
+    public function getALLLocationByBisId($bisId){
+        $data =[
+            'bis_id'=>$bisId,
+
+        ];
+
+        $result = $this->where($data)->order('id','desc')->select();
+        return $result;
+    }
+
+
+
 }

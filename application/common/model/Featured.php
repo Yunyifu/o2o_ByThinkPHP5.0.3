@@ -12,7 +12,7 @@ class Featured extends BaseModel
         ];
         $order = ['id' =>'desc'];
 
-        $result = $this->where($data)->order($order)->paginate();
+        $result = $this->where($data)->order($order)->paginate(5);
         return $result;
     }
 

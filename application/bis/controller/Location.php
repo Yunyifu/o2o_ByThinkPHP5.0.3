@@ -5,9 +5,12 @@ class Location extends Base
 {
     public function index(){
 
-        //列表页，后续待开发
+        $bisId = $this->getLoginUser()->bis_id;
+        $result = model('BisLocation')->getALLLocationByBisId($bisId);
 
-        return $this->fetch();
+        return $this->fetch('',[
+            'result' => $result,
+        ]);
     }
 
     public function add(){
@@ -59,5 +62,22 @@ class Location extends Base
             'categorys'=>$categorys
 
         ]);}
+    }
+
+    public function status(){
+        $data = input('get.');
+        /*$validate = validate('Category');
+        if(!$validate->scene('status')->check($data)){
+            $this->error($validate->getError());
+        }*/
+
+        $res = model('BisLocation')->save([
+            'status'=>$data['status']],
+            ['id'=>$data['id']]);
+        if($res){
+            $this->success('更新成功');
+        }else{
+            $this->error('状态更新失败');
+        }
     }
 }

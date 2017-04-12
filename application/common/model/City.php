@@ -21,6 +21,6 @@ class City extends Model{
         ];
 
         $order = ['id'=>'desc'];
-        return $this->where($data)->order($order)->select();
+        return $this->where($data)->order($order)->paginate(10);
     }
 }
